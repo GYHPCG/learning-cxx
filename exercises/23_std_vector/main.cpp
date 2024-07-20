@@ -1,47 +1,47 @@
 ﻿#include "../exercise.h"
 #include <vector>
-
+#include <cstring>
 // READ: std::vector <https://zh.cppreference.com/w/cpp/container/vector>
 
 // TODO: 将下列 `?` 替换为正确的代码
 int main(int argc, char **argv) {
     {
         std::vector<int> vec{1, 2, 3, 4, 5};
-        ASSERT(vec.size() == ?, "Fill in the correct value.");
+        ASSERT(vec.size() == 5, "Fill in the correct value.");
         // THINK: `std::vector` 的大小是什么意思？与什么有关？
-        ASSERT(sizeof(vec) == ?, "Fill in the correct value.");
+        ASSERT(sizeof(vec) == sizeof(int) * vec.size(), "Fill in the correct value.");
         int ans[]{1, 2, 3, 4, 5};
-        ASSERT(std::memcmp(vec.?, ans, sizeof(ans)) == 0, "Fill in the correct values.");
+        ASSERT(std::memcmp(vec.data(), ans, sizeof(ans)) == 0, "Fill in the correct values.");
     }
     {
         std::vector<double> vec{1, 2, 3, 4, 5};
         {
-            ASSERT(vec.size() == ?, "Fill in the correct value.");
-            ASSERT(sizeof(vec) == ?, "Fill in the correct value.");
+            ASSERT(vec.size() == 5, "Fill in the correct value.");
+            ASSERT(sizeof(vec) == sizeof(double) * vec.size(), "Fill in the correct value.");
             double ans[]{1, 2, 3, 4, 5};
-            ASSERT(std::memcmp(vec.?, ans, sizeof(ans)) == 0, "Fill in the correct values.");
+            ASSERT(std::memcmp(vec.data(), ans, sizeof(ans)) == 0, "Fill in the correct values.");
         }
         {
             vec.push_back(6);
-            ASSERT(vec.size() == ?, "Fill in the correct value.");
-            ASSERT(sizeof(vec) == ?, "Fill in the correct value.");
+            ASSERT(vec.size() == 6, "Fill in the correct value.");
+            ASSERT(sizeof(vec) == sizeof(double) * vec.size(), "Fill in the correct value.");
             vec.pop_back();
-            ASSERT(vec.size() == ?, "Fill in the correct value.");
-            ASSERT(sizeof(vec) == ?, "Fill in the correct value.");
+            ASSERT(vec.size() == 5, "Fill in the correct value.");
+            ASSERT(sizeof(vec) == sizeof(double) * vec.size(), "Fill in the correct value.");
         }
         {
             vec[4] = 6;
-            ASSERT(vec[0] == ?, "Fill in the correct value.");
-            ASSERT(vec[1] == ?, "Fill in the correct value.");
-            ASSERT(vec[2] == ?, "Fill in the correct value.");
-            ASSERT(vec[3] == ?, "Fill in the correct value.");
-            ASSERT(vec[4] == ?, "Fill in the correct value.");
+            ASSERT(vec[0] == 1, "Fill in the correct value.");
+            ASSERT(vec[1] == 2, "Fill in the correct value.");
+            ASSERT(vec[2] == 3, "Fill in the correct value.");
+            ASSERT(vec[3] == 4, "Fill in the correct value.");
+            ASSERT(vec[4] == 6, "Fill in the correct value.");
         }
         {
             // THINK: `std::vector` 插入删除的时间复杂度是什么？
-            vec.insert(?, 1.5);
+            vec.insert(1, 1.5);
             ASSERT((vec == std::vector<double>{1, 1.5, 2, 3, 4, 6}), "Make this assertion pass.");
-            vec.erase(?);
+            vec.erase(3);
             ASSERT((vec == std::vector<double>{1, 1.5, 2, 4, 6}), "Make this assertion pass.");
         }
         {
