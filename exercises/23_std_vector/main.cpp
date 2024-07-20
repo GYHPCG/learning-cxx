@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
     {
         std::vector<int> vec{1, 2, 3, 4, 5};
         ASSERT(vec.size() == ?, "Fill in the correct value.");
+        // THINK: `std::vector` 的大小是什么意思？与什么有关？
         ASSERT(sizeof(vec) == ?, "Fill in the correct value.");
         int ans[]{1, 2, 3, 4, 5};
         ASSERT(std::memcmp(vec.?, ans, sizeof(ans)) == 0, "Fill in the correct values.");
@@ -62,7 +63,7 @@ int main(int argc, char **argv) {
             auto capacity = vec.capacity();
             vec.resize(16);
             ASSERT(vec.size() == ?, "Fill in the correct value.");
-            ASSERT(vec.capacity() == ?, "Fill in the correct identifier.");
+            ASSERT(vec.capacity() == ?, "Fill in a correct identifier.");
         }
         {
             vec.reserve(256);
