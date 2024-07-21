@@ -37,20 +37,6 @@ struct Tensor4D {
         for (int i = 0; i < 4; ++i) {
             size *= shape[i];
         }
-
-        // for (unsigned int i = 0; i < size; ++i) {
-        //     unsigned int idx = i;
-        //     unsigned int idx_others = 0;
-        //     unsigned int stride = 1;
-        //     for (int j = 3; j >= 0; --j) {
-        //         unsigned int coord = (idx / stride) % shape[j];
-        //         if (others.shape[j] != 1) {
-        //             idx_others += coord * stride;
-        //         }
-        //         stride *= shape[j];
-        //     }
-        //     data[i] += others.data[idx_others];
-        // }
          for (unsigned int i = 0; i < size; ++i) {
             unsigned int idx = i;
             unsigned int idx_others = 0;
@@ -140,12 +126,11 @@ int main(int argc, char **argv) {
 
         auto t0 = Tensor4D(s0, d0);
         auto t1 = Tensor4D(s1, d1);
-        auto t2 = Tensor4D(s0, d0);
         t0 += t1;
-        for (unsigned int i = 0; i < sizeof(d0) / sizeof(int); i++) {
-            std::cout << "t0: " << t0.data[i] << " t2: " << t2.data[i] << std::endl;
+        for (unsigned int i = 0; i < sizeof(d0) / sizeof(double); i++) {
+            // std::cout << "t0: " << t0.data[i] << " d0: " << d0[i] << std::endl;
             // std::cout << "t2: " << t2.data[i] << std::endl;
-            ASSERT(t0.data[i] == t2.data[i] + 1, "Every element of t0 should be incremented by 1 after adding t1 to it.");
+            ASSERT(t0.data[i] == d0[i] + 1, "Every element of t0 should be incremented by 1 after adding t1 to it.");
         }
     }
 }
