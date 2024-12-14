@@ -1,6 +1,8 @@
 #include "../exercise.h"
 
 // TODO: 改正函数实现，实现正确的缓存优化斐波那契计算
+// THINk: 这个函数是一个纯函数（pure function）吗？
+// READ: 纯函数 <https://zh.wikipedia.org/wiki/%E7%BA%AF%E5%87%BD%E6%95%B0>
 static unsigned long long fibonacci(int i) {
     // TODO: 为缓存设置正确的初始值
     static unsigned long long cache[128], cached = 2;
@@ -20,8 +22,8 @@ int main(int argc, char **argv) {
     ASSERT(fibonacci(3) == 2, "fibonacci(3) should be 2");
     ASSERT(fibonacci(10) == 55, "fibonacci(10) should be 55");
 
-    auto fib100 = fibonacci(100);
-    std::cout << "fibonacci(100) = " << fib100 << std::endl;
-    ASSERT(fib100 == 3736710778780434371, "fibonacci(100) should be 3736710778780434371");
+    auto fib90 = fibonacci(90);
+    std::cout << "fibonacci(90) = " << fib90 << std::endl;
+    ASSERT(fib90 == 2880067194370816120, "fibonacci(90) should be 2880067194370816120");
     return 0;
 }

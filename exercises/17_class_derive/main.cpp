@@ -2,13 +2,47 @@
 
 // READ: 派生类 <https://zh.cppreference.com/w/cpp/language/derived_class>
 
-// 三个类型的定义在下方，它们的关系是：B 派生自 A 并包含一个 X 类型的成员。
+static int i = 0;
 
-// ↓↓↓ 这是声明
-struct X;
-struct A;
-struct B;
-// ↑↑↑ 这是声明
+struct X {
+    int x;
+
+    X(int x_) : x(x_) {
+        std::cout << ++i << ". " << "X(" << x << ')' << std::endl;
+    }
+    X(X const &other) : x(other.x) {
+        std::cout << ++i << ". " << "X(X const &) : x(" << x << ')' << std::endl;
+    }
+    ~X() {
+        std::cout << ++i << ". " << "~X(" << x << ')' << std::endl;
+    }
+};
+struct A {
+    int a;
+
+    A(int a_) : a(a_) {
+        std::cout << ++i << ". " << "A(" << a << ')' << std::endl;
+    }
+    A(A const &other) : a(other.a) {
+        std::cout << ++i << ". " << "A(A const &) : a(" << a << ')' << std::endl;
+    }
+    ~A() {
+        std::cout << ++i << ". " << "~A(" << a << ')' << std::endl;
+    }
+};
+struct B : public A {
+    X x;
+
+    B(int b) : A(1), x(b) {
+        std::cout << ++i << ". " << "B(" << a << ", X(" << x.x << "))" << std::endl;
+    }
+    B(B const &other) : A(other.a), x(other.x) {
+        std::cout << ++i << ". " << "B(B const &) : A(" << a << "), x(X(" << x.x << "))" << std::endl;
+    }
+    ~B() {
+        std::cout << ++i << ". " << "~B(" << a << ", X(" << x.x << "))" << std::endl;
+    }
+};
 
 // ↓↓↓ 这是定义
 

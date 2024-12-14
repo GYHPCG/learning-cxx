@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
         auto t0 = Tensor4D(shape, data);
         auto t1 = Tensor4D(shape, data);
         t0 += t1;
-        for (unsigned int i = 0; i < sizeof(data) / sizeof(int); i++) {
+        for (auto i = 0u; i < sizeof(data) / sizeof(*data); ++i) {
             ASSERT(t0.data[i] == data[i] * 2, "Tensor doubled by plus its self.");
         }
     }
