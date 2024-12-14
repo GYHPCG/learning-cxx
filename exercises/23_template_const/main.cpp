@@ -36,11 +36,7 @@ private:
     unsigned int data_index(unsigned int const indices[N]) const {
         unsigned int index = 0;
         for (unsigned int i = 0; i < N; ++i) {
-<<<<<<< HEAD:exercises/21_template_const/main.cpp
             // ASSERT(indices[i] < shape[i], "index out of range");
-=======
-            ASSERT(indices[i] < shape[i], "Invalid index");
->>>>>>> upstream/main:exercises/23_template_const/main.cpp
             // TODO: 计算 index
             index += indices[i] * (shape[i + 1] * shape[i + 2] * shape[i + 3]);
 
