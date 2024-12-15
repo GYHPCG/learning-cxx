@@ -36,10 +36,10 @@ private:
     unsigned int data_index(unsigned int const indices[N]) const {
         unsigned int index = 0;
         for (unsigned int i = 0; i < N; ++i) {
-            // ASSERT(indices[i] < shape[i], "index out of range");
+            ASSERT(indices[i] < shape[i], "index out of range");
             // TODO: 计算 index
             index += indices[i] * (shape[i + 1] * shape[i + 2] * shape[i + 3]);
-
+            
         }
         return index;
     }

@@ -54,13 +54,13 @@ public:
         }
         return cache[i];
     }
-    // 解决const问题
-     size_t  operator[](int i) const  {
-        for (int j = cached; j <= i; ++j) {
-            cache[j] = cache[j - 1] + cache[j - 2];
-        }
-        return cache[i];
-    }
+    // // 解决const问题
+    //  size_t  operator[](int i) const  {
+    //     for (int j = cached; j <= i; ++j) {
+    //         cache[j] = cache[j - 1] + cache[j - 2];
+    //     }
+    //     return cache[i];
+    // }
 
     // NOTICE: 不要修改这个方法
     size_t operator[](int i) const {
